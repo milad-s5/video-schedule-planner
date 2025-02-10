@@ -23,3 +23,48 @@ To configure your schedule, modify the settings in `main.py`:
 # Configuration example:
 interval_type = 'daily'  # Options: 'daily', 'weekly', 'monthly'
 time_per_interval = 3600  # Duration of each interval in seconds (e.g., 1 hour = 3600)
+```
+
+## Example Usage
+```python
+[Running] python -u "f:\Projects\video-schedule-planner\main.py"
+Interval Type: daily
+Time Per Interval: 60.0 minutes
+
+2025-02-10:
+  - 001 Introduction to Reinforcement Learning.mp4
+  - 002 Understanding Markov Decision Processes.mp4
+  - 003 Key Concepts: States, Actions, and Rewards.mp4
+  - 004 The Exploration-Exploitation Dilemma.mp4
+  - 005 Value Iteration and Policy Iteration.mp4
+  - 006 Dynamic Programming in RL.mp4
+  - 007 Q-Learning: A Model-Free Method.mp4
+
+2025-02-11:
+  - 008 Deep Q-Learning: Neural Networks in RL.mp4
+  - 009 Policy Gradient Methods.mp4
+  - 010 Actor-Critic Algorithms.mp4
+  - 011 Introduction to Multi-Agent Reinforcement Learning.mp4
+  - 012 Inverse Reinforcement Learning.mp4
+  - 013 RL in Real-World Applications.mp4
+  - 014 Challenges and Future of RL Research.mp4
+```
+
+## How to Run
+1. Install required dependencies:
+```bash
+pip install -r requirements.txt
+```
+2. Modify the course_path variable in main.py to the location of your video files.
+
+3. Configure the interval type ('daily', 'weekly', or 'monthly') and time per interval (in seconds).
+
+4. Run the script
+```bash
+python main.py
+```
+
+## Customization
+* You can modify the time per interval to fit your personal schedule.
+* The script supports video files with extensions like .mp4, .mkv, .avi, .mov, .flv, and will automatically calculate the duration of each video.
+* The script generates a schedule for watching the videos in sequence, ensuring you stay within the desired time frame for each interval.
