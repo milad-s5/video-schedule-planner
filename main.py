@@ -27,6 +27,9 @@ def get_video_duration(video_path):
         print(f"Error reading {video_path}: {e}")
         return 0
 
+def format_duration(seconds):
+    return str(timedelta(seconds=int(seconds)))
+
 videos = []
 for root, _, files in os.walk(course_path):
     for file in sorted(files):  
@@ -46,7 +49,7 @@ def schedule_videos(videos, interval_type, time_per_interval):
 
     for video, duration in videos:
         if current_total + duration <= time_per_interval:
-            interval_videos.append(video)
+            interval_videos.append((video, duration))
             current_total += duration
         else:
             schedule[current_interval_start.strftime("%Y-%m-%d")] = interval_videos
@@ -55,8 +58,8 @@ def schedule_videos(videos, interval_type, time_per_interval):
             elif interval_type == 'weekly':
                 current_interval_start += timedelta(weeks=1)
             elif interval_type == 'monthly':
-                current_interval_start += timedelta(weeks=4)  # Roughly 1 month (4 weeks)
-            interval_videos = [video]
+                current_interval_start += timedelta(weeks=4)
+            interval_videos = [(video, duration)]
             current_total = duration
 
     if interval_videos:
@@ -68,5 +71,5 @@ schedule = schedule_videos(videos, interval_type, time_per_interval)
 
 for interval, vids in schedule.items():
     print(f"\n{interval}:")
-    for vid in vids:
-        print(f"  - {os.path.basename(vid)}")
+    for vid, duration in vids:
+        print(f"  - {os.path.basename(vid)} ({format_duration(duration)})")
