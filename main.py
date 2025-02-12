@@ -2,6 +2,7 @@ import os
 import sys
 from pymediainfo import MediaInfo
 from datetime import datetime, timedelta
+from tabulate import tabulate
 
 # Path to your course folder (Modify this)
 course_path = r"C:\\path\\to\\your\\course"
@@ -70,6 +71,6 @@ def schedule_videos(videos, interval_type, time_per_interval):
 schedule = schedule_videos(videos, interval_type, time_per_interval)
 
 for interval, vids in schedule.items():
+    table_data = [(os.path.basename(vid), format_duration(duration)) for vid, duration in vids]
     print(f"\n{interval}:")
-    for vid, duration in vids:
-        print(f"  - {os.path.basename(vid)} ({format_duration(duration)})")
+    print(tabulate(table_data, headers=["Video Name", "Duration"], tablefmt="grid"))
