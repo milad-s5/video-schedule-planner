@@ -1,7 +1,7 @@
 from config import INTERVAL_TYPE, TIME_PER_INTERVAL
 from services.video_loader import VideoLoader
 from services.scheduler import VideoScheduler
-from utils.formatter import Formatter
+from gui.schedule_viewer import ScheduleViewer
 from utils.file_dialog import FileDialog
 
 def main():
@@ -13,8 +13,7 @@ def main():
     videos = VideoLoader.load_videos(course_path)
     schedule = VideoScheduler.schedule_videos(videos, INTERVAL_TYPE, TIME_PER_INTERVAL)
 
-    Formatter.display_schedule(schedule)
-    Formatter.save_schedule(schedule, course_path)
+    ScheduleViewer.display_schedule(schedule)
 
 if __name__ == "__main__":
     main()
