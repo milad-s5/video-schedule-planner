@@ -1,2 +1,3 @@
 pymediainfo
 tabulate
+tkinter
