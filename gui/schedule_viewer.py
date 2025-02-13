@@ -12,6 +12,8 @@ class ScheduleViewer:
         root = tk.Tk()
         root.title("Video Schedule")
 
+        root.state('zoomed')
+
         style = ttk.Style()
         style.configure("Treeview.Heading", font=("Helvetica", 12, "bold"))
         style.configure("Treeview", font=("Helvetica", 10), rowheight=25)
@@ -36,5 +38,7 @@ class ScheduleViewer:
         scrollbar = ttk.Scrollbar(frame, orient="vertical", command=tree.yview)
         tree.configure(yscroll=scrollbar.set)
         scrollbar.pack(side="right", fill="y")
+
+        root.protocol("WM_DELETE_WINDOW", root.quit)
 
         root.mainloop()
