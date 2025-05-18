@@ -12,7 +12,10 @@ class ScheduleViewer:
         root = tk.Tk()
         root.title("Video Schedule")
 
-        root.state('zoomed')
+        try:
+            root.state('zoomed')  # Windows
+        except tk.TclError:
+            root.attributes('-zoomed', True)  # Linux (sometimes)
 
         style = ttk.Style()
         style.configure("Treeview.Heading", font=("Helvetica", 12, "bold"))
