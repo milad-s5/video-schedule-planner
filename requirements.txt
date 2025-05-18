@@ -1,3 +1,4 @@
 pymediainfo
 tabulate
-tkinter
+pyinstaller
+pillow
